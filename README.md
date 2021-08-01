@@ -1,10 +1,10 @@
 [![](https://images.microbadger.com/badges/image/unicon/shibboleth-idp.svg)](https://microbadger.com/images/unicon/shibboleth-idp "docker image badge")
 
 # Major Change
-As of 10 Jan 2019 (v3.4.3), the build mechanism for this image has changed from the historical method to using multi-stage builds, which has several advantages for the image maintainers. This change should NOT impact image users, but please test and validate your deployment before pushing the new image directly into production. If you do find issues, please submit them at https://github.com/Unicon/shibboleth-idp-dockerized/issues.
+As of 1 Aug 2021 (v3.4.8), the build mechanism for this image has changed from the historical method to using multi-stage builds, which has several advantages for the image maintainers. This change should NOT impact image users, but please test and validate your deployment before pushing the new image directly into production. If you do find issues, please submit them at https://github.com/Unicon/shibboleth-idp-dockerized/issues.
 
 ## Overview
-This Docker image contains a deployed Shibboleth IdP 3.4.3 running on OpenJDK-based Zulu 8 Update 212 and Jetty 9.3.27 running on the latest CentOS 7 base. This image is a base image and should be used to set the configuration with local changes.
+This Docker image contains a deployed Shibboleth IdP 3.4.8 running on OpenJDK-based Zulu 8 Update 212 and Jetty 9.3.27 running on the latest CentOS 7 base. This image is a base image and should be used to set the configuration with local changes.
 
 Every component (Java, Jetty, Shibboleth IdP, and extensions) in this image is verified using cryptographic hashes obtained from each vendor and stored in the `Dockerfile` directly. This makes the build essentially deterministic.
 
@@ -14,11 +14,12 @@ A working example of how this image can be used can be found at https://github.c
 Currently maintained tags:
 
 * lastest: master branch
-* 3.4.3 - The latest 3.4.3 image
+* 3.4.8 - The latest 3.4.8 image
 
 There are also date-based tags tied to versions to allow users to maintain consistency between minor changes, such as Jetty or Java version upgrades. See https://github.com/Unicon/shibboleth-idp-dockerized/wiki/Tags for details.
 
 Retired tags:
+* 3.4.3 - The latest 3.4.3 image
 * 3.4.2 - The latest 3.4.2 image
 * 3.4.1 - The latest 3.4.1 image
 * 3.4.0 - The latest 3.4.0 image
