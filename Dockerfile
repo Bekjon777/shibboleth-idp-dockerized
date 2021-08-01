@@ -3,8 +3,8 @@ FROM centos:centos7 as temp
 ENV java_version=8.0.212 \
     zulu_version=8.38.0.13 \
     java_hash=14136019014c020fee0fc13073d00388 \
-    jetty_version=9.3.27.v20190418 \
-    jetty_hash=7c7c80dd1c9f921771e2b1a05deeeec652d5fcaa \
+    jetty_version=9.3.29.v20201019 \
+    jetty_hash=1f61ece21ad87c9835be9d9440725698b6928baa \
     idp_version=3.4.8 \
     idp_hash=ad0fcd834d0c6571363d47ad6dde08fbb75cce3202c41f8c64a5b42614f95a27 \
     dta_hash=2f547074b06952b94c35631398f36746820a7697 \
