@@ -53,22 +53,22 @@ RUN wget -q https://build.shibboleth.net/nexus/content/repositories/releases/net
     && mv jetty9-dta-ssl-1.0.0.jar /opt/shib-jetty-base/lib/ext/
 
 # Download the slf4j library for Jetty logging, verify the hash, and place
-RUN wget -q http://central.maven.org/maven2/org/slf4j/slf4j-api/$slf4j_version/slf4j-api-$slf4j_version.jar \
+RUN wget -q https://repo1.maven.org/maven2/org/slf4j/slf4j-api/$slf4j_version/slf4j-api-$slf4j_version.jar \
     && echo "$slf4j_hash  slf4j-api-$slf4j_version.jar" | sha1sum -c - \
     && mv slf4j-api-$slf4j_version.jar /opt/shib-jetty-base/lib/logging/
 
 # Download the logback_classic library for Jetty logging, verify the hash, and place
-RUN wget -q http://central.maven.org/maven2/ch/qos/logback/logback-classic/$logback_version/logback-classic-$logback_version.jar \
+RUN wget -q https://repo1.maven.org/maven2/ch/qos/logback/logback-classic/$logback_version/logback-classic-$logback_version.jar \
     && echo "$logback_classic_hash  logback-classic-$logback_version.jar" | sha1sum -c - \
     && mv logback-classic-$logback_version.jar /opt/shib-jetty-base/lib/logging/
 
 # Download the logback-core library for Jetty logging, verify the hash, and place
-RUN wget -q http://central.maven.org/maven2/ch/qos/logback/logback-core/$logback_version/logback-core-$logback_version.jar \
+RUN wget -q https://repo1.maven.org/maven2/ch/qos/logback/logback-core/$logback_version/logback-core-$logback_version.jar \
     && echo "$logback_core_hash logback-core-$logback_version.jar" | sha1sum -c - \
     && mv logback-core-$logback_version.jar /opt/shib-jetty-base/lib/logging/
 
 # Download the logback-access library for Jetty logging, verify the hash, and place
-RUN wget -q http://central.maven.org/maven2/ch/qos/logback/logback-access/$logback_version/logback-access-$logback_version.jar \
+RUN wget -q https://repo1.maven.org/maven2/ch/qos/logback/logback-access/$logback_version/logback-access-$logback_version.jar \
     && echo "$logback_access_hash logback-access-$logback_version.jar" | sha1sum -c - \
     && mv logback-access-$logback_version.jar /opt/shib-jetty-base/lib/logging/
 
