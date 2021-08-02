@@ -37,7 +37,7 @@ Retired tags contain a valid version of the IdP, but are no longer rev'd when ne
 Assuming that you do not already have one, create your initial IdP configuration by run with:
 
 ```
-docker run -it -v $(pwd):/ext-mount --rm unicon/shibboleth-idp init-idp.sh
+docker run -it -v $(pwd):/ext-mount --rm bekjon777/shibboleth-idp init-idp.sh
 ```
 
 > This downloads the base image, if it does not already exists, creates a temporary container, and exports the new configuration to the local (Docker Host) file system. After the process completes, the temporary Docker container is deleted as it is no longer needed.
@@ -105,7 +105,7 @@ You can use this image as a base image for one's own IdP deployment. Assuming th
 Next, assuming you create a Dockerfile similar to this example:
 
 ```
-FROM unicon/shibboleth-idp
+FROM bekjon777/shibboleth-idp
 
 MAINTAINER <your_contact_email>
 
@@ -181,7 +181,7 @@ Removing the `/opt/shib-jetty-base/etc/jetty-logging.xml` (or setting it to your
 ## Building from Source
 
 ```
-$ docker build --tag="<org_id>/shibboleth-idp" github.com/unicon/shibboleth-idp-dockerized
+$ docker build --tag="<org_id>/shibboleth-idp" github.com/bekjon777/shibboleth-idp-dockerized
 ```
 
 ## Recipes
@@ -189,9 +189,11 @@ Instructions for things like using the Oracle JVM and JCE with this image can be
 
 ## Authors/Contributors
 
-This project was developed as part of Unicon's [Open Source Support program](https://unicon.net/support), which is funded by the program subscribers. Professional support/integration assistance for this module is available. For more information, visit <https://unicon.net/opensource/shibboleth>.
+This project was developed as part of Unicon's [Open Source Support program](https://unicon.net/support), which was funded by Unicon's program subscribers.
 
 * John Gasper (<jgasper@unicon.net>)
+
+Unicon discontinued to maintain this image, I desided to fork this repository and modify it accordingly by our current needs and changes.
 
 ## LICENSE
 
