@@ -1,13 +1,13 @@
 FROM centos:centos7 as temp
 
-ENV java_version=8.0.212 \
-    zulu_version=8.38.0.13 \
-    java_hash=14136019014c020fee0fc13073d00388 \
-    jetty_version=9.3.27.v20190418 \
-    jetty_hash=7c7c80dd1c9f921771e2b1a05deeeec652d5fcaa \
-    idp_version=3.4.3 \
-    idp_hash=eb86bc7b6366ce2a44f97cae1b014d307b84257e3149469b22b2d091007309db \
-    dta_hash=2f547074b06952b94c35631398f36746820a7697 \
+ENV java_version=11.0.12 \
+    zulu_version=11.50.19 \
+    java_hash=b8e8a63b79bc312aa90f3558edbea59e71495ef1a9c340e38900dd28a1c579f3 \
+    jetty_version=9.4.43.v20210629 \
+    jetty_hash=a909e2966522c6b7bd5a8632a8086dfd3d0d277d \
+    idp_version=4.1.4 \
+    idp_hash=65429f547a7854b30713d86ba5901ca718eae91efb3e618ee11108be59bf8a29 \
+    dta_hash=444fe792c90e313dbbd1fddf879032b2c7d14012 \
     slf4j_version=1.7.25 \
     slf4j_hash=da76ca59f6a57ee3102f8f9bd9cee742973efa8a \
     logback_version=1.2.3 \
@@ -25,12 +25,12 @@ RUN yum -y update \
 
 # Download Java, verify the hash, and install
 RUN wget -q http://cdn.azul.com/zulu/bin/zulu$zulu_version-ca-jdk$java_version-linux_x64.tar.gz \
-    && echo "$java_hash  zulu$zulu_version-ca-jdk$java_version-linux_x64.tar.gz" | md5sum -c - \
+    && echo "$java_hash  zulu$zulu_version-ca-jdk$java_version-linux_x64.tar.gz" | sha256sum -c - \
     && tar -zxvf zulu$zulu_version-ca-jdk$java_version-linux_x64.tar.gz -C /opt \
     && ln -s /opt/zulu$zulu_version-ca-jdk$java_version-linux_x64/jre/ /opt/jre-home
 
 # Download Jetty, verify the hash, and install, initialize a new base
-RUN wget -q http://central.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$jetty_version/jetty-distribution-$jetty_version.tar.gz \
+RUN wget -q http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$jetty_version/jetty-distribution-$jetty_version.tar.gz \
     && echo "$jetty_hash  jetty-distribution-$jetty_version.tar.gz" | sha1sum -c - \
     && tar -zxvf jetty-distribution-$jetty_version.tar.gz -C /opt \
     && ln -s /opt/jetty-distribution-$jetty_version/ /opt/jetty-home
@@ -48,9 +48,9 @@ RUN wget -q https://shibboleth.net/downloads/identity-provider/$idp_version/shib
     && ln -s /opt/shibboleth-identity-provider-$idp_version/ /opt/shibboleth-idp
 
 # Download the library to allow SOAP Endpoints, verify the hash, and place
-RUN wget -q https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty9-dta-ssl/1.0.0/jetty9-dta-ssl-1.0.0.jar \
-    && echo "$dta_hash  jetty9-dta-ssl-1.0.0.jar" | sha1sum -c - \
-    && mv jetty9-dta-ssl-1.0.0.jar /opt/shib-jetty-base/lib/ext/
+RUN wget -q https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty94-dta-ssl/1.0.0/jetty94-dta-ssl-1.0.0.jar \
+    && echo "$dta_hash  jetty94-dta-ssl-1.0.0.jar" | sha1sum -c - \
+    && mv jetty94-dta-ssl-1.0.0.jar /opt/shib-jetty-base/lib/ext/
 
 # Download the slf4j library for Jetty logging, verify the hash, and place
 RUN wget -q http://central.maven.org/maven2/org/slf4j/slf4j-api/$slf4j_version/slf4j-api-$slf4j_version.jar \
